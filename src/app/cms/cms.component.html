@@ -1,0 +1,122 @@
+
+
+    <section class="hbox stretch">
+      <aside class="bg-primary aside-sm nav-off-screen" id="nav">
+      <app-sidebar></app-sidebar>
+          </aside>
+
+<section id="content">
+  <section class="vbox">
+      <header class="header bg-white b-b displayiblock width100 ">
+              <a class="btn btn-link btn-menu" data-toggle="class:nav-off-screen" data-target="#nav"> 
+                  <i class="fa fa-bars"></i> 
+              </a>
+              <a class="btn btn-link btn-menu-set"> 
+                  <i class="fas fa-cog"></i>
+              </a>
+              <a class="btn btn-link btn-menu-set"> 
+                  <i class="fas fa-sign-out-alt"></i> 
+              </a>
+      </header>
+      <section class="scrollable wrapper">
+          <div class="displayiblock width100">
+              <div class="page-wrapper"> 
+                    <div *ngIf="loader" class="loaderCntr" style="display: block;">
+                            <div class="loading-screen loading-screen--white"> <span class="preloader--center preloader--lg icon-spin"> <i class="udi udi-circle-loader"></i> </span> </div>
+                          </div>
+        
+                  <h1 class="page-heading">CMS</h1>
+                  <div class="search-bar-opt">
+                      <div class="col-md-5">
+                          <div class="search-bar-fo">
+                              <input  ng-model="settingRadio('search')" [formControl]="queryField" type="search" placeholder="Search">
+                              <i class="fas fa-search"></i>
+                          </div>
+                      </div>
+                      <div class="col-md-7">
+                          <!-- <div class="utl-radio-cal displayiblock width100"> -->
+                              <!-- <div class="ut-ra-ca-pol displayiblock float-left"><input  [checked]='true'   (click)="allTicket('all')" type="radio" name="subs"> All </div>
+                              <div class="ut-ra-ca-pol displayiblock float-left"><input (click)="highSetRadio('high')" type="radio" name="subs"> High </div>
+                              <div class="ut-ra-ca-pol displayiblock float-left"><input  (click)="lowSetRadio('low')"  type="radio" name="subs"> Low </div> -->
+                              <div class=" float-left"> <pagination-controls class="myPagination" maxSize="7"(pageChange)="p=($event)" id="client"></pagination-controls>
+                              </div>  
+                            <!-- </div> -->
+                      </div>
+                  </div>
+                  <div class="data-tables rigt-border displayiblock width100">
+                      <div class="tableoverflower displayiblock width100">
+                          <div class="table-main displayiblock width100">
+                              <div class="table-body displayiblock width100">
+                                  <div class="table-tr table-heading  displayiblock width100">
+                                      <div class="table-td float-left tw-20 text-center">
+                                          <span>Serial No.</span>
+                                      </div>
+                                      <div class="table-td float-left tw-30 text-center">
+                                          <span>App Type</span>
+                                      </div>
+                                      <div class="table-td float-left tw-30 text-center">
+                                        <span>Type</span>
+                                    </div>
+                                      <div class="table-td float-left tw-20 text-center">
+                                          <span>Action</span>
+                                      </div>
+                                  </div>
+                                  <div *ngFor="let ticket of tickets|paginate: { id: 'client', itemsPerPage: 10, currentPage: p, totalItems:count } let i = index;" class="table-tr displayiblock width100">
+                                      <!-- table td details -->
+                                      <!-- <div *ngIf="ticket.appType==1">
+                                      
+                                    </div> -->
+                                      <div class="table-td float-left tw-20 text-center">
+                                            <span>{{ (p - 1) * 10 + i +1 }}</span>
+                                      </div>
+
+
+                                      <ng-container *ngIf="ticket.appType==0;else second">
+                                            <div class="table-td float-left tw-30 text-center">
+                                                    <span>{{a}}</span>
+                                              </div>
+                                      </ng-container>
+                                      <ng-template #second>
+                                            <div class="table-td float-left tw-30 text-center">
+                                                    <span>{{b}}</span>
+                                              </div>
+                                          <ng-template  *ngIf="ticket.appType==2">
+                                                <div class="table-td float-left tw-30 text-center">
+                                                        <span>{{c}}</span>
+                                                  </div>
+                                          </ng-template>
+                                      </ng-template>
+                                     
+                               
+                                            <!-- <div class="table-td float-left tw-30 text-center">
+                                                    <span>{{b}}</span>
+                                              </div> -->
+                          
+
+
+
+                                      
+                                      <div class="table-td float-left tw-30 text-center">
+                                            <span>dfb</span>
+                                    </div>
+                                      <div class="table-td float-left tw-20 text-center">
+                                          <a class="ttd-linker" href="#">
+                                              <i class="far fa-eye"></i> View
+                                          </a> &nbsp; &nbsp;
+                                          <a class="ttd-linker" href="#">
+                                              <i class="far fa-edit"></i> Edit
+                                          </a>
+                                      </div> 
+                                      <!-- table td view box end -->
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+  </section>
+</section>
+<!-- /.vbox -->
+</section>

@@ -1,0 +1,57 @@
+<body class="siging-back">
+  <section id="content" class="m-t-lg wrapper-md animated fadeInUp"> 
+      <section class="login panel">
+        <!-- <div *ngIf="loader" class="loaderCntr" style="display: block;">
+            <div class="loading-screen loading-screen--white"> <span class="preloader--center preloader--lg icon-spin"> <i class="udi udi-circle-loader"></i> </span> </div>
+          </div> -->
+          
+
+          <div class="login-headefr">
+              <div class="lh-img displayiblock width100 text-center">
+                  <img src="./assets/images/logo.png">
+              </div>
+              <span class="sub-head-login displayiblock width100 text-center">
+                  Engage the world around you
+              </span>
+              <span class="head-login displayiblock width100 text-center">
+                  Admin Login
+              </span>
+          </div>
+          <form  [formGroup]="form" (submit)="onLoginSubmit()" class="panel-body">
+              <div class="form-group">
+                  <label class="control-label">Email</label>
+                  <div [ngClass]="{'has-error': (form.controls.email.errors && form.controls.email.dirty), 'has-success': !form.controls.email.errors}" class="form-input-group">
+                   
+             <input formControlName="email"  autocomplete="off"  type="email" placeholder="test@example.com" class="form-control">
+       <!-- Validation -->
+              <ul class="help-block">
+              <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This field is required</li>
+              <li *ngIf="(form.controls.email.errors?.minlength && form.controls.email.dirty || form.controls.email.errors?.maxlength && form.controls.email.dirty ) && form.controls.email.dirty">Minimum characters: 5, Maximum characters: 30</li>
+              <!-- <li *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty">This must be a valid e-mail</li> -->
+              </ul>
+                     
+                      <i class="far fa-user"></i>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label">Password</label>
+                  <div class="form-input-group">
+                      <input formControlName="password" type="password" placeholder="*************" class="form-control">
+                      <i class="fas fa-lock"></i>
+                  </div>
+              </div>  
+              <a routerLink="/forgotPassword" class="pull-right m-t-xs"><small>Forgot password?</small></a>
+              <div class="log_button displayiblock width100 text-center">
+
+                  <h5 style="text-align: center;color: #a94442"> {{ message }}</h5>
+
+                  <button  [disabled]="!form.valid || processing"  class="btn btn-theme set-neg-marg">Login</button>
+              </div>
+          </form>
+      </section> 
+  </section>
+  <!-- / footer -->
+  <script src="js/app.v2.js"></script>
+  <!-- Bootstrap -->
+  <!-- app -->
+</body>

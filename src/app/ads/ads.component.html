@@ -1,0 +1,145 @@
+
+
+
+    <section class="hbox stretch">
+        <aside class="bg-primary aside-sm nav-off-screen" id="nav">
+        <app-sidebar></app-sidebar>
+            </aside>
+  
+  
+<section id="content">
+    <section class="vbox">
+        <header class="header bg-white b-b displayiblock width100 ">
+                <a class="btn btn-link btn-menu" data-toggle="class:nav-off-screen" data-target="#nav"> 
+                    <i class="fa fa-bars"></i> 
+                </a>
+                <a class="btn btn-link btn-menu-set"> 
+                    <i class="fas fa-cog"></i>
+                </a>
+                <a class="btn btn-link btn-menu-set"> 
+                    <i class="fas fa-sign-out-alt"></i> 
+                </a>
+        </header>
+        <section class="scrollable wrapper">
+            <div class="displayiblock width100">
+                <div class="page-wrapper"> 
+                    <h1 class="page-heading">ADS</h1> 
+                    <div class="data-tables rigt-border displayiblock width100">
+
+                            <div *ngIf="loader" class="loaderCntr" style="display: block;">
+                                    <div class="loading-screen loading-screen--white"> <span class="preloader--center preloader--lg icon-spin"> <i class="udi udi-circle-loader"></i> </span> </div>
+                                  </div>
+                                  
+                        <div class="tableoverflower displayiblock width100">
+                            <div class=" float-left"> <pagination-controls class="myPagination" maxSize="7"(pageChange)="getAllAds($event)" id="client"></pagination-controls>
+                            </div>               
+                            <div class="table-main displayiblock width100 padding-top-0">
+                                <div id="ads-p" class="table-body displayiblock width100">
+                                 
+                                           
+                                    <div class="table-tr table-heading  displayiblock width100">
+                                        <div class="table-td float-left tw-5 text-center">
+                                            <span>Ad ID</span>
+                                        </div>
+                                        <div class="table-td float-left tw-25 text-center">
+                                            <span>Image</span>
+                                        </div>
+                                        <div class="table-td float-left tw-15 text-center">
+                                            <span>Vendor</span>
+                                        </div>
+                                        <div class="table-td float-left tw-15 text-center">
+                                            <span>Views</span>
+                                        </div>
+                                        <div class="table-td float-left tw-15 text-center">
+                                            <span>Date Created</span>
+                                        </div>
+                                        <div class="table-td float-left tw-25 text-center">
+                                            <span>Actions</span>
+                                        </div>
+                                    </div>
+                                    <div *ngFor="let ad of ads|paginate: { id: 'client', itemsPerPage: 10, currentPage: p, totalItems:count } let i = index;" class="table-tr displayiblock width100">
+                                        <div style="height: 90px" class="table-td float-left tw-5 text-center">
+                                            <span>{{ (p - 1) * 10 + i +1 }}</span>
+                                        </div>
+                                       
+                                            <div style="height: 90px" class="table-td float-left tw-25 text-center">
+                                                <span class="ttfl-tc-mg">
+                                                    <img src="{{ad.image}}">
+                                                </span>
+                                            
+                                        </div>
+                                        <div  style="height: 90px" class="table-td float-left tw-15  text-center">
+                                            <span>{{ad.vendorData.name}}</span>
+                                        </div>
+                                        <div style="height: 90px"  class="table-td float-left tw-15 text-center">
+                                            <span>{{ad.totalViews}}</span>
+                                        </div>
+                                        <div style="height: 90px" class="table-td float-left tw-15 text-center">
+                                            <span>{{ad.created |date:'short'}}</span>
+                                        </div>
+                                        <div style="height: 90px" class="table-td float-left tw-25 text-center">
+                                                <button (click)="Clickme(i)" class="  dd-details astext"><i class="far fa-eye"></i> View</button> 
+                                                <button class="astext" *ngIf="ad.isActive" (click)="buttonDisableClick(i)" >
+                                                    <i class="far fa-times-circle"></i> Deactivate</button>
+                                                    <button class="astext" *ngIf="!ad.isActive" (click)="buttonDisableClick(i)" >
+                                                            <i class="far fa-times-circle"></i> Activate</button>
+                                        </div>
+
+                                        
+                                        <!-- table td view box --> 
+                                        <div class="ddd-tdbox dd-detailsbox{{i}}" style="display:none;">
+                                            <a class="close" (click)="closeme(i)">
+                                                x
+                                            </a>
+                                                <div class="dd-ttd-boxer">
+                                                    <div class="uvb-dc1 displayiblock width100">
+                                                        <div class="uvb-dc1-und tw-30 float-left">
+                                                            <div class="adsn-img-set">
+                                                                <img  src="{{ad.image}}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="uvb-dc1-und tw-70 float-left">
+                                                            <div class="uvb-dc1-und tw-100 float-left">
+                                                                <div class="udu-text-list">
+                                                                    <div class="utl-setter utl-heading" style="font-size:18px;">
+                                                                        <span><b>Analytics : </b></span>
+                                                                    </div>
+                                                                    <div class="utl-setter">
+                                                                        <span><b>Views : </b></span>
+                                                                        <span>{{ad.totalViews}}</span>
+                                                                    </div>
+                                                                    <div class="utl-setter">
+                                                                        <span><b>Downloads : </b></span>
+                                                                        <span>{{ad.totalDownloads}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="uvb-dc1-und tw-100 float-left" style="margin-top:30px">
+                                                                <div class="udu-text-list">
+                                                                    <div class="utl-setter utl-heading" style="font-size:18px;">
+                                                                        <span><b>Info : </b></span>
+                                                                    </div>
+                                                                    <div class="utl-setter"> 
+                                                                        <span>Loreum ipsum is the funny text that is </span>
+                                                                    </div>
+                                                                  
+                                                                </div>
+                                                            </div>  
+                                                        </div>  
+                                                    </div> 
+                                                </div>
+                                            </div> 
+                                        <!-- table td view box end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+<!-- /.vbox -->
+</section>

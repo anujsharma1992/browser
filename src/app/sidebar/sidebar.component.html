@@ -1,0 +1,79 @@
+
+    <section class="vbox">
+      <header class="dker nav-bar nav-bar-fixed-top">
+          <a href="#" class="nav-brand">
+              <img src="./assets/images/logo-vert.png">
+          </a>
+      </header>
+      <section>
+          <!-- user -->
+          <div class=" nav-user pos-rlt">
+              <div class="nav-avatar pos-rlt">
+                  <a href="#" class="thumb-sm avatar" data-toggle="dropdown"> 
+                      <img src="./assets/images/avatar.jpg" alt="" class=""> Admin
+                      <span class="caret"></span> 
+                  </a>
+                  <ul class="dropdown-menu m-t-sm animated fadeInLeft"> <span class="arrow top"></span>
+                      <li> <a href="#">Settings</a> </li>
+                      <li> <a href="profile.html">Profile</a> </li>  
+                  </ul>
+              </div>
+          </div>
+          <!-- / user -->
+          <!-- nav -->
+          <nav class="nav-primary hidden-xs">
+              <ul class="nav">
+                  <li class="nav">
+                      <a [routerLink]="['/accounts']"> 
+                          <img class="sidebar-img" src="./assets/images/sideicons/ico7.png"> 
+                          <span>Dashboard</span> 
+                      </a>
+                  </li>
+                  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav">
+                      <a [routerLink]="['/accounts']"> 
+                          <img class="sidebar-img" src="./assets/images/sideicons/ico8.png">  
+                          <span>Accounts</span> 
+                      </a>
+                  </li>
+                  <li class=" ">
+                      <a href="vendor.html"> 
+                          <img class="sidebar-img" src="./assets/images/sideicons/ico6.png">  
+                          <span>Vendor</span> 
+                      </a>
+                  </li>
+                  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="">
+                      <a  [routerLink]="['/support']"> 
+                          <img class="sidebar-img" src="./assets/images/sideicons/ico5.png">  
+                          <span>Support</span> 
+                      </a>
+                  </li>
+                  <li class=" ">
+                      <a [routerLink]="['/accounts']"> 
+                          <img class="sidebar-img" src="./assets/images/sideicons/ico4.png">  
+                          <span>Questions</span> 
+                      </a>
+                  </li>
+                  <li class=" ">
+                      <a [routerLink]="['/ads']"> 
+                          <img class="sidebar-img" src="./assets/images/sideicons/ico3.png">  
+                          <span>Ads</span> 
+                      </a>
+                  </li>
+                  <li class=" ">
+                      <a [routerLink]="['/cms']"> 
+                          <img class="sidebar-img" src="./assets/images/sideicons/ico2.png">  
+                          <span>CMS</span> 
+                      </a>
+                  </li>
+                  <li class=" ">
+                      <a [routerLink]="['/accounts']"> 
+                          <img class="sidebar-img" src="./assets/images/sideicons/ico1.png"> 
+                          <span>Admin Users</span> 
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+          <!-- / nav --> 
+      </section>
+  </section>
+  
